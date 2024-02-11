@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const app = express();
 const RootRouter = require("./Router");
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://your-frontend-domain.com'
+}));
 app.use("/public", express.static("public"));
 
 app.use(RootRouter);
