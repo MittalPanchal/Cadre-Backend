@@ -13,8 +13,8 @@ app.use(RootRouter);
 mongoose.connect(process.env.MONGO).then(() => {
   console.log("connect successfully");
 });
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Your server is running on ${process.env.PORT}`);
+const server = app.listen(() => {
+  console.log(`Your server is running on ${server.address().port}`);
 });
 const io = require("socket.io")(server, {
   cors: {
