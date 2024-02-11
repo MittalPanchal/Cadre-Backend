@@ -20,8 +20,7 @@ const server = app.listen(() => {
 });
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://cadre-eight.vercel.app/",
-    methods: ["GET", "POST","PUT" , "DELETE"]
+    origin:"*"
   },
 });
 
