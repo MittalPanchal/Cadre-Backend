@@ -39,13 +39,13 @@ userSchema.statics.signup = async function (name, email, password, role_name, co
   if (role_name === "Admin") {
     throw Error("You are not Authorized! to signup as a Admin");
   }
-  const salt = await bcrypt.genSalt(10);
-  const hashpassword = await bcrypt.hash(password, salt);
+  // const salt = await bcrypt.genSalt(10);
+  // const hashpassword = await bcrypt.hash(password, salt);
 
   let newUser = {
     name: name,
     email: email,
-    password: hashpassword,
+    password: password,
     role_name: role_name,
     contact_number: contact_number
   };
@@ -59,11 +59,11 @@ userSchema.statics.login = async function (email, password) {
     throw Error("Email is not correct! try with another email");
   }
 
-  const isMatched = await bcrypt.compare(password, user.password);
+  // const isMatched = await bcrypt.compare(password, user.password);
 
-  if (!isMatched) {
-    throw Error("Password is incorrect!");
-  }
+  // if (!isMatched) {
+  //   throw Error("Password is incorrect!");
+  // }
   return user;
 };
 module.exports = mongoose.model("Users", userSchema);
